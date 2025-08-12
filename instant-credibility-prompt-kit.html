@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instant Credibility Prompt Kit</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background-color: #f3f4f8;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+    }
+    .container { max-width: 952px; width: 100%; }
+    h1 { font-size: 2.8rem; font-weight: 800; color: #111; margin-bottom: 10px; }
+    h2 { font-size: 1.75rem; font-weight: 700; color: #333; margin: 40px 0 20px; text-decoration: underline; }
+    .input-area { margin-bottom: 40px; }
+    input[type="text"] {
+      padding: 14px 20px; font-size: 1.1rem; width: 300px; max-width: 100%;
+      border: 2px solid #ccc; border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    button {
+      padding: 14px 24px; font-size: 1rem; font-weight: 600;
+      background-color: #000; color: #fff; border: none; border-radius: 10px;
+      margin-left: 10px; cursor: pointer; transition: background-color 0.3s ease;
+    }
+    button:hover { background-color: #1a1a1a; }
+    /* Dashed separator under button */
+    .separator {
+      border: 0;
+      border-top: 2px dashed #ccc;
+      margin: 30px 0;
+    }
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 30px;
+    }
+    .prompt-card {
+      background-color: #fff; border-radius: 16px; padding: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05); transition: box-shadow 0.3s ease;
+    }
+    .prompt-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+    .prompt-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: #000; }
+    .prompt-summary { font-size: 1rem; margin-bottom: 12px; color: #444; }
+    .prompt-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  background-color: #f9f9f9;
+  border-left: 4px solid #000;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  max-height: 6.5em; /* Limits visible height */
+  transition: max-height 0.3s ease;
+}
+
+.prompt-text.expanded {
+  -webkit-line-clamp: unset;
+  max-height: none;
+}
+
+
+    .copy-btn {
+      background-color: #000000; border: none; padding: 8px 12px;
+      border-radius: 6px; font-size: 0.9rem; cursor: pointer;
+    }
+    .copy-btn:hover { background-color: #5285E2; }
+    footer { text-align: center; margin-top: 40px; }
+    footer a { color: #5285E2; text-decoration: none; font-weight: 600; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo1.png" alt="Instant Credibility Prompt Kit" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+    <p style="font-size:1.2rem;color:#333;max-width:700px;">
+      Enter your keyword below, copy & paste prompts, gain instant credibility.
+    </p>
+    <div class="input-area">
+      <input type="text" id="keywordInput" placeholder="Enter your keyword...">
+      <button onclick="replaceKeyword()">Generate</button>
+      <hr class="separator">
+    </div>
+
+    <h2>Instant Influence Triggers & Prompts</h2><div class="prompt-grid" id="promptGrid1"></div>
+    <h2>Implied-Expertise & Positioning Prompts</h2><div class="prompt-grid" id="promptGrid2"></div>
+    <h2>Borrowed Authority & Curated Credibility Prompts</h2><div class="prompt-grid" id="promptGrid3"></div>
+    <h2>Instant Thought Leader Prompts</h2><div class="prompt-grid" id="promptGrid4"></div>
+    <h2>Authority Without Proof Prompts</h2><div class="prompt-grid" id="promptGrid5"></div>
+    <h2>Status-by-Insight Prompts</h2><div class="prompt-grid" id="promptGrid6"></div>
+    <h2>Authority-by-Observation Prompts</h2><div class="prompt-grid" id="promptGrid7"></div>
+    <h2>Borrowed Status Through Comparative Positioning Prompts</h2><div class="prompt-grid" id="promptGrid8"></div>
+    <h2>Social Signaling Prompts</h2><div class="prompt-grid" id="promptGrid9"></div>
+    <h2>Invented Language Prompts</h2><div class="prompt-grid" id="promptGrid10"></div>
+
+    <footer>
+      <a href="https://www.facebook.com/groups/markhesscustomergroup" target="_blank" rel="noopener">Click Here To Join Our Private Facebook Group</a>
+    </footer>
+  </div>
+
+  <script>
+    const section1 = [
+      { 
+  title: "The Expert Title Generator", 
+  summary: "Craft credibility-boosting titles that imply authority without needing a license, degree, or certification.", 
+  template: "Act as a brand positioning strategist and expert in regulatory-safe language. For the topic of [keyword], generate two sets of expert titles that help someone position themselves as an authority in the space without requiring a license, certification, or degree. First, generate 10 impressive-sounding, legally safe professional titles that use terms like strategist, advisor, consultant, coach, guide, specialist, mentor, or architect. These titles should sound credible, desirable, and results-focused, while staying fully compliant for marketing use in the U.S. Second, generate 10 titles that imply a background in academic, scientific, or specialized study—without actually requiring formal degrees or licensure. Use elevated language. The goal is to signal advanced expertise and intellectual authority while remaining legally safe and accessible to anyone. Format the two sets with clear labels. After giving the user these two sets ask the user if they want to select one and create 5 brand position statements/value propositions tailored to that title. Each one highlights different angles (outcomes, credibility, empathy, innovation, or niche focus) to help you define your unique positioning" 
+},
+{
+  title: "The Authority Leak Framework",
+  summary: "Leak subtle insider advice to sound like you’ve been in high-level rooms—without naming names.",
+  template: "Write a post where I casually share 5 pieces of [keyword] advice I’ve seen top performers use behind closed doors—without naming names. Make it feel like I’ve been in private conversations, masterminds, or high-level rooms, and I’m letting the audience peek behind the curtain."
+},
+{
+  title: "The Ghost Cred Drop",
+  summary: "Imply you’ve ghostwritten for industry elites—without saying who.",
+  template: "Create a post that starts: ‘I used to write [keyword] content for people with massive followings…’ and then share an insight or unpopular truth I learned by helping them shape their messaging. Don’t name-drop, but make it obvious I’ve seen how the sausage gets made."
+},
+ 
+
+	  { title: "The Contrarian Authority Blueprint", summary: "Flip popular beliefs on their head and establish yourself as the person who sees what others don’t.", template: "List 3 unpopular truths about [keyword] that challenge the typical advice people hear—positioning me as the rare voice of reason who’s been paying closer attention than everyone else." },
+      { title: "The Expert Pattern Disruptor", summary: "Reveal hidden failure patterns in [keyword] and show how your unique insight breaks the mold.", template: "Create a 5-part content series that uncovers why most [keyword] approaches don’t actually work—and outline my alternative lens that helps people get unstuck for good." },
+      { title: "The Insight Cascade Technique", summary: "Deliver layered, expert-level clarity by unpacking a single misunderstood [keyword] concept in a way that feels revelatory.", template: "Break down one overlooked or commonly misunderstood aspect of [keyword] using a cascading insight format—start with the surface misunderstanding, then layer deeper truths beneath it to position me as someone who sees what others don’t and explains it better than anyone else." },
+      { title: "The Scroll-Stopping Reframer", summary: "Interrupt surface-level thinking and redirect attention toward your deeper, clearer insight.", template: "Write a scroll-stopping post that begins with: ‘Everyone focuses on the wrong thing when it comes to [keyword]…’ and follow it with a surprising but practical shift in perspective that makes me sound like the one who actually understands the root issue." },
+      { title: "The Micro-Thought Leader Drop", summary: "Use short, sharp, original observations to embed the impression of wisdom and authority with every line.", template: "Write 10 concise, original-sounding insights about [keyword] that feel like they came from someone who’s been quietly mastering the topic for years—each line should be tweet-length, punchy, and impossible to ignore." },
+      { title: "The Expert Lens Activator", summary: "Shift from participant to authority by framing [keyword] through your own original lens—one that feels earned, not borrowed.", template: "Describe how I uniquely see [keyword] compared to most people—capture the philosophies, patterns, or mental filters I apply that set my perspective apart and make others see me as a trusted source of clarity, not just another voice in the space." }
+    ];
+
+    const section2 = [
+      { title: "The Obsession Origin Blueprint", summary: "Share a story that builds trust because you clearly care more than most.", template: "Write a short origin story explaining how I became obsessed with understanding [keyword]—make it feel personal, intense, and full of hard-earned insight, so readers trust me based on conviction, not credentials." },
+      { title: "The Unofficial Trend Analyst", summary: "Show up like someone who lives inside the industry by analyzing shifts and patterns.", template: "Write an analysis of a recent shift, trend, or controversial debate happening in the [keyword] space—use pattern language and original phrasing that positions me as someone quietly observing everything and seeing deeper implications others miss." },
+      { title: "The Field Notes Signal Drop", summary: "Create the vibe of an active researcher—not just a passive content creator.", template: "Create 3 ‘Field Notes’ entries about [keyword]—each one should feel like a raw observation, lesson, or insight from someone who’s actively studying, testing, or decoding this subject in the real world." },
+      { title: "The ‘Failure Filter’ Insight Post", summary: "Sound like someone who knows why most advice fails—and what actually works.", template: "Write a post titled: ‘Why Most Advice About [keyword] Doesn’t Work—and What I Focus on Instead’—frame it like someone who has sorted through hundreds of failed attempts and finally cracked what actually matters." },
+      { title: "The Thought Leader Breakdown Series", summary: "Break down a topic like someone who’s spent years distilling the truth.", template: "Create a 5-part content series breaking down a complex or misunderstood concept within [keyword]—make it sound like I’ve taught this before, thought through it deeply, and designed each part to build trust and clarity." },
+      { title: "The Private Notes Flex", summary: "Share what you’re exploring in a way that feels like you’re ahead of the curve.", template: "Write a post titled ‘What I’m Currently Exploring in [keyword]’—make it feel like I’m sharing my private notes, questions, and discoveries to signal I’m deep in the trenches of this topic, not just repeating what others say." }
+    ];
+
+    const section3 = [
+      { title: "The Peer Frame Hook", summary: "Position yourself next to respected names in the space by comparing ideas—not resumes.", template: "Write a post that contrasts my perspective on [keyword] with something taught by a well-known figure in the space—position me respectfully as someone building on or challenging their ideas with clarity, not arrogance." },
+      { title: "The Thought Expander Technique", summary: "Show that you think beyond what’s already being said—while crediting where the idea began.", template: "Create a post that starts with: ‘Inspired by something [credible figure] once said about [keyword], but here’s how I took it further…’—followed by my unique extension, tweak, or interpretation." },
+      { title: "The Underrated Genius Shoutout", summary: "Gain credibility by highlighting someone lesser-known who should be more famous—and framing yourself as the person who spotted them early.", template: "Write a post that shines a light on an underrated thinker, quote, or resource related to [keyword]—make it feel like I’m the kind of person who discovers what others overlook, and that gives me edge." },
+      { title: "The Comparative Breakdown Format", summary: "Use side-by-side comparison to educate and subtly elevate your unique voice.", template: "Create a simple comparison chart or written breakdown that contrasts two popular approaches to [keyword]—then include my personal twist or third path as a ‘what most people miss’ solution." },
+      { title: "The Myth-Mirror Debunk", summary: "Use a widely accepted idea as a springboard to reframe and elevate your own insight.", template: "Write a post that starts with: ‘You’ve probably heard [common belief about keyword] from people like [big name]… but here’s the side they don’t talk about, and why it matters more than people think.’" },
+      { title: "The Source Synthesizer Post", summary: "Quote multiple credible sources and layer in your unique take—so readers see you as the one who connects the dots others miss.", template: "Create a post that weaves together 2–3 insights or quotes from respected sources on [keyword]—then end with my own original takeaway that ties it all together in a way that feels fresh and authoritative." }
+    ];
+
+    const section4 = [
+      { title: "The Laws of the Game Manifesto", summary: "Build strategic authority by defining the hidden rules no one else is explaining.", template: "List the 3–5 unspoken laws of [keyword] that most people break without realizing—explain each one like a mini-truth bomb that positions me as someone who ‘gets it’ at a deeper level." },
+      { title: "The “Hard Lessons, Fast Wins” Blueprint", summary: "Make people feel like they’re borrowing your scars, skipping your mistakes, and getting your clearest advice—straight from the trenches.", template: "Write a bold, no-fluff post titled: ‘Here’s Exactly What I’d Do If I Were Starting Over in [keyword]—No Theory, Just Hard Lessons That Work.’ Include 3–5 fast wins or strategic moves that sound like they were forged in the fire. Each tip should feel like a quote ripped from someone who’s paid the price to learn what actually matters." },
+      { title: "The Pillar Framework Format", summary: "Introduce timeless principles that act like a blueprint for anyone trying to win.", template: "Create a post outlining the 4 Core Pillars of [keyword] Success—name each pillar like it belongs in a textbook, then explain it clearly and decisively like I’ve taught it 100 times." },
+      { title: "The “This Is Why You’re Stuck” Post", summary: "Deliver instant insight by naming what everyone’s been feeling but can’t articulate.", template: "Write a post that starts with: ‘Most people stay stuck with [keyword] because they keep chasing X when the real issue is Y…’—then explain the true root cause like someone who's been watching this pattern for years." },
+      { title: "The 12-Month Forecast Drop", summary: "Signal vision, leadership, and next-level insight—without needing data.", template: "Write a 12-month prediction post about what’s going to shift in the [keyword] space—make it sound bold, inevitable, and slightly contrarian so I come off like a true trend-watcher." },
+      { title: "The Strategic Filter Tool", summary: "Offer a mental model or simple decision rule that gives people clarity fast.", template: "Create a decision-making filter people can use to make smarter choices in [keyword]—make it feel like a mental shortcut I developed from experience, not theory." }
+    ];
+
+    const section5 = [
+      { title: "The Invisible Credentials Bio", summary: "Craft a powerful-sounding bio that signals prestige without ever mentioning results, degrees, or job titles.", template: "Write 3 bio variations for someone in the [keyword] space that signal trust, authority, and intrigue—without listing results, credentials, or years of experience." },
+      { title: "The Founder’s Manifesto Note", summary: "Use emotional resonance and bold belief statements to make your brand origin feel mission-driven and magnetic.", template: "Write a short founder’s note for a brand in the [keyword] niche—use tone and conviction to position me as a driven authority even if I’m just starting out." },
+      { title: "The ‘Voice in the Noise’ About Page", summary: "Position yourself as the rare signal in a sea of static—even if you're new.", template: "Write an About page that introduces me as a refreshing, honest voice in the [keyword] space—someone who cuts through noise without relying on proof or clout." },
+      
+      { title: "The ‘Why I Created This’ Mission Statement", summary: "Use story and empathy to make your purpose sound seasoned—even if you’re just getting started.", template: "Write a compelling ‘Why I Created This’ blurb for a new [keyword] product or service—make it sound like it came from someone who's seen the gap, lived the problem, and cares deeply." },
+      { title: "The Vibe Over Resume Elevator Pitch", summary: "Make people lean in through presence, tone, and emotional gravity—not proof.", template: "Create an elevator pitch for someone in the [keyword] niche that makes people think ‘this person knows their stuff’—without ever mentioning any proof, stats, or titles." }
+    ];
+
+    const section6 = [
+      { title: "The Status Reveal Hook", summary: "Sound like someone who uncovers hidden truths before anyone else.", template: "Write a 1-post series called ‘Why Nobody Talks About This in [keyword]’ that positions me as the person who sees the gaps others ignore." },
+      { title: "The Clarity Metaphor Drop", summary: "Use striking analogies to frame complex ideas clearly.", template: "Give me 3 original metaphors for [keyword] that simplify a complex idea and make me seem like a master translator of concepts." },
+      { title: "The Pattern Flip Interrupt", summary: "Flip common approaches on their head to create ‘aha’ moments.", template: "Create a ‘pattern interrupt’ post where I flip the script on how most people approach [keyword]—make it feel undeniable." },
+      { title: "The Untaught Truth Lead", summary: "Reveal what no course or guide ever mentions.", template: "Write a post that starts with: ‘Here’s the part they don’t teach you in [keyword] courses]…’ and deliver a concise but powerful lesson." },
+      { title: "The 99% Insight Hook", summary: "Leverage surprise statistics to imply deep expertise.", template: "Give me a ‘99% of people don’t realize this…’ insight hook about [keyword] followed by an expert-sounding breakdown." },
+      { title: "The Visionary Glimpse", summary: "Show you see the trajectory before anyone else.", template: "Write a short post imagining the future of [keyword] as if I’m already living in it—position me as ahead of the curve." }
+    ];
+
+    const section7 = [
+      { title: "The Pattern Noticer Post", summary: "Position yourself as someone who sees what others miss—just by watching more closely.", template: "Write a post that starts with: ‘After studying hundreds of [keyword] problems or behaviors, I noticed a strange pattern…’ and dive into that insight." },
+      { title: "The Observer-Analyst Series", summary: "Borrow prestige by narrating real-world behaviors and extracting smart takes.", template: "Create 3 posts where I play the role of ‘observer-analyst,’ noticing subtle signals in [keyword] communities and reframing them." },
+      { title: "The Strategic Dissection Post", summary: "Reverse-engineer someone else’s success to show your tactical eye.", template: "Write a breakdown of another brand’s [keyword] strategy—frame it like I’m dissecting the mechanics and drawing lessons." },
+      { title: "Notes From the Field", summary: "Use field-style reporting to sound boots-on-the-ground authoritative.", template: "Create a post titled ‘My Notes From the Field: [keyword]’ sharing 3 observations from hands-on testing or research." },
+      { title: "The Trend Pulse Update", summary: "Signal you’re plugged into real-time shifts.", template: "Write a mini-series: ‘What I’m Seeing Happen Right Now in [keyword]’ with 2–3 emerging trends." },
+      { title: "The Insight Journal Entry", summary: "Turn casual reflections into sharp thought leadership.", template: "Share a journal-style snippet where I drop 3 raw thoughts on [keyword] that feel like glimpses into my expert mind." }
+    ];
+
+    const section8 = [
+      { title: "The Alternative Expert Comparison", summary: "Respectfully contrast your approach with a heavyweight name.", template: "Write a post comparing my method in [keyword] to [big name]’s—position mine as the modern, more practical alternative." },
+      { title: "The Authority Framework Grid", summary: "Use a visual grid to imply your framework is superior.", template: "Create a 2-column comparison chart of my signature system vs. a mainstream one and highlight why mine wins." },
+      { title: "The Not-Quite-Enough Breakdown", summary: "Show you see what others gloss over.", template: "Write a post: ‘[Big Name] teaches X about [keyword]… but here’s where they don’t go far enough,’ then fill that gap." },
+      { title: "The Modernization Tribute Post", summary: "Honor a classic thinker, then update their idea.", template: "Write: ‘Inspired by [famous thinker], but evolved for today’s world…’ and deliver your fresh take on [keyword]." },
+      { title: "The Referenced Reflection Image", summary: "Leverage name-drop authority in an image caption.", template: "Create a quote image referencing [big name] and add a one-line insight of your own that feels next-level." },
+      { title: "The Adjacent Expert Post", summary: "Stand next to heavyweights without sounding like a knockoff.", template: "Write a post: ‘While I deeply respect [big name], here’s my different perspective on [keyword]…’ framed with clarity and humility." }
+    ];
+
+    const section9 = [
+      { title: "The Client Conversation Cue", summary: "Imply people already seek your advice.", template: "Write a post starting: ‘A client asked me the other day about [keyword]…’ and share an organic, insightful answer." },
+      { title: "The Flooded DM Frame", summary: "Signal demand through subtle volume cues.", template: "Create a post: ‘I’ve been getting a lot of DMs about [keyword] lately…’ then deliver a generous, helpful tip." },
+      { title: "The Humble-Brag Resource Drop", summary: "Use casual stats to imply impact without flexing.", template: "Begin: ‘This isn’t a flex, but 20+ people asked for this [keyword] resource in 24hrs…’ then explain what it is and why it works." },
+      { title: "The Behind-the-Scenes Status Drop", summary: "Drop vague hints of big projects in motion.", template: "Write: ‘Working on something big in [keyword]…’ using language that implies insider momentum without details." },
+      { title: "The Inner Circle Signal", summary: "Imply exclusivity even with a small group.", template: "Share: ‘Here’s what I’m sharing with my inner circle this week about [keyword]…’ then drop a sharp nugget." },
+      { title: "The Overflow Framing Post", summary: "Let demand speak for your expertise.", template: "Start: ‘I wasn’t planning another post on [keyword], but after 3 people followed up…’ then justify and deliver a fresh insight." }
+    ];
+
+   const section10 = [
+  {
+    title: "The Branded Term Generator",
+    summary: "Invent proprietary phrases that make your ideas feel like intellectual property.",
+    template: "Invent 5 original terms for [keyword] that spark curiosity and feel uniquely mine—like ‘Glucose Looping’ or ‘Micro-Momentum Framework’. Each term should instantly signal ownership and expertise."
+  },
+  {
+    title: "The Expert Concept Drop",
+    summary: "Teach one of your invented terms as if it’s already industry standard.",
+    template: "Write a post teaching one of my invented [keyword] terms as if it’s been in use for years—casually name-drop it and explain why it unlocks deeper understanding."
+  },
+  {
+    title: "The Glossary of Original Ideas",
+    summary: "Build a specialized vocabulary that deepens perceived expertise.",
+    template: "Create a glossary of 7 invented [keyword] terms that make readers feel like they’re entering a new world—define each term clearly and imply they’ve been shaping your thinking for ages."
+  },
+  {
+  title: "The Terminology Spotlight",
+  summary: "Illuminate a single coined term by anchoring it to a concrete insight.",
+  template: "Write a post that starts with: 'I call this phenomenon the [keyword] shift because…' then share a vivid example that defines the term’s meaning and compels readers to adopt it."
+},
+  {
+    title: "The Origin Story Anchor",
+    summary: "Tie your invented terms back to a personal revelation for authenticity.",
+    template: "Share a brief story explaining how one of my invented [keyword] terms came to life—make it sound like an ‘aha’ moment that others have overlooked."
+  },
+  {
+    title: "The Language Loop Hook",
+    summary: "Reinforce your coined term by looping it throughout the post.",
+    template: "Write a post that introduces a new [keyword] term and repeats it 3–4 times in different contexts—so readers internalize it as part of their vocabulary."
+  }
+];
+
+
+    function replaceKeyword() {
+      const keyword = document.getElementById('keywordInput').value || '[keyword]';
+      [
+        {id:'promptGrid1', data:section1},
+        {id:'promptGrid2', data:section2},
+        {id:'promptGrid3', data:section3},
+        {id:'promptGrid4', data:section4},
+        {id:'promptGrid5', data:section5},
+        {id:'promptGrid6', data:section6},
+        {id:'promptGrid7', data:section7},
+        {id:'promptGrid8', data:section8},
+        {id:'promptGrid9', data:section9},
+        {id:'promptGrid10', data:section10}
+      ].forEach(s => {
+        const grid = document.getElementById(s.id);
+        grid.innerHTML = '';
+        s.data.forEach(p => grid.appendChild(createCard(p, keyword)));
+      });
+    }
+
+    function createCard(p, keyword) {
+  const card = document.createElement('div');
+  card.className = 'prompt-card';
+  const promptWithKeyword = p.template.replaceAll('[keyword]', keyword);
+  card.innerHTML = `
+    <div class="prompt-title">${p.title}</div>
+    <div class="prompt-summary">${p.summary}</div>
+    <div class="prompt-text">${promptWithKeyword}</div>
+    <button class="copy-btn" onclick="copyToClipboard(this)">Copy Prompt</button>
+    <button class="copy-btn" onclick="togglePrompt(this)">Show more</button>
+  `;
+  return card;
+}
+
+
+
+    function copyToClipboard(btn) {
+      const text = btn.previousElementSibling.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy Prompt', 2000);
+      });
+    }
+
+    window.onload = replaceKeyword;
+  </script>
+  <script>
+  function togglePrompt(button) {
+  const promptText = button.previousElementSibling.previousElementSibling;
+  const isExpanded = promptText.classList.toggle('expanded');
+  button.textContent = isExpanded ? 'Show less' : 'Show more';
+}
+
+
+</script>
+
+</body>
+</html>
+
