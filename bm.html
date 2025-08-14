@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siva's Focus Tools</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Base & Reset --- */
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #b0b8d9;
+            --background-color: #12121c;
+            --card-background: rgba(35, 35, 50, 0.7);
+            --card-hover-background: rgba(45, 45, 60, 0.9);
+            --accent-color: #00aaff;
+            --glow-color: rgba(0, 170, 255, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            background-image: linear-gradient(135deg, #12121c 0%, #1a1a2e 100%);
+            color: var(--primary-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* --- Typography & Header --- */
+        .main-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #ffffff, #99ddff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .main-header p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            font-weight: 300;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        /* --- Card Grid System (Responsive Magic!) --- */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        /* --- Card Design --- */
+        .card {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: var(--card-hover-background);
+            box-shadow: 0 10px 30px -10px var(--glow-color);
+        }
+
+        /* --- MODIFIED: Digit Icon Style --- */
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%; /* Makes the container a circle */
+            border: 3px solid var(--accent-color);
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700; /* Bold number */
+            margin-bottom: 1rem;
+            line-height: 1; /* Ensures clean vertical alignment */
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            flex-grow: 1; /* Pushes the button to the bottom */
+            margin-bottom: 1.5rem; /* Space between description and button */
+        }
+
+        /* --- Call-to-Action Button Style --- */
+        .card-cta {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 80%;
+            max-width: 200px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .card-cta:hover {
+            background-color: #0095e0;
+            transform: scale(1.05);
+        }
+        
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+
+        /* --- Media Queries for Mobile Fine-Tuning --- */
+        @media (max-width: 600px) {
+            .main-header h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="main-header">
+            <h1>Siva's Focus Tools</h1>
+            <p>A collection of productivity and creation tools.</p>
+        </header>
+
+        <main>
+            <section id="focus-tools">
+                <h2 class="section-title">Bookmark Your Tools</h2>
+                <div class="resource-grid">
+                    
+                    <div class="card">
+                        <div class="card-icon">1</div>
+                        <h3 class="card-title">Focus Mode</h3>
+                        <p class="card-description">A distraction-free writing environment to help you concentrate on your text.</p>
+                        <a href="https://spmohq.github.io/focus/" target="_blank" rel="noopener noreferrer" class="card-cta">Open App</a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">2</div>
+                        <h3 class="card-title">Focus Editor</h3>
+                        <p class="card-description">An advanced editor with additional tools and features for focused writing sessions.</p>
+                        <a href="https://spmohq.github.io/focus/editor.html" target="_blank" rel="noopener noreferrer" class="card-cta">Open Editor</a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">3</div>
+                        <h3 class="card-title">Instant Credibility Prompt Kit</h3>
+                        <p class="card-description">A collection of prompts designed to help you build authority and credibility in your content.</p>
+                        <a href="https://spmohq.github.io/focus/instant-credibility-prompt-kit.html" target="_blank" rel="noopener noreferrer" class="card-cta">View Kit</a>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">4</div>
+                        <h3 class="card-title">Image Prompt Generator</h3>
+                        <p class="card-description">Generate creative and effective prompts for AI image generation tools.</p>
+                        <a href="https://spmohq.github.io/focus/image-prompt-generator.html" target="_blank" rel="noopener noreferrer" class="card-cta">Generate Prompts</a>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Siva Prasad Mukherjee. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
